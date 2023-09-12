@@ -33,12 +33,29 @@ for item in data_json:
             volume=item['volume'],
             issue=item['issue']
         ))
+    elif item['source'] == 'dvd':
+        list_dvd.append(Dvd(
+            title=item['title'],
+            subject=item['subject'],
+            upc=item['upc'],
+            actors=item['actors'],
+            directors=item['directors'],
+            genre=item['genre']
+        ))
+    elif item['source'] == 'cd':
+        list_cd.append(Cd(
+            title=item['title'],
+            subject=item['subject'],
+            upc=item['upc'],
+            artist=item['artist']
+        ))
         
 catalog_all = [list_book, list_magazine, list_cd, list_dvd]
 
-input_search = 'media_cnn'
+input_search = 'test'
 results = Catalog(catalog_all).search(input_search)
 
 print ('\n\n=====| HASIL SEARCH |=====\n')
 for index, result in enumerate(results):
-    print(f'result ke {index+1} | {result}\n\n')
+    print(f'result ke {index+1} | {result}\n')
+print('=====================================\n\n')
